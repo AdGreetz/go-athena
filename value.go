@@ -3,9 +3,9 @@ package athena
 import (
 	"database/sql/driver"
 	"fmt"
+	"strings"
 	"strconv"
 	"time"
-
 	"github.com/aws/aws-sdk-go/service/athena"
 )
 
