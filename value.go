@@ -36,6 +36,16 @@ func convertValue(athenaType string, rawValue *string) (interface{}, error) {
 
 	val := *rawValue
 	switch athenaType {
+	case "array":	
+	    var out []string
+	    arr := *rawValue
+	    arr = strings.TrimPrefix(arr, "[")
+	    arr = strings.TrimSuffix(arr, "]")
+	    parts := strings.Split(arr, ",")
+	    for _, part := range parts {
+	      out = append(out, strings.TrimSpace(part))
+	    }
+	    return out, nil
 	case "smallint":
 		return strconv.ParseInt(val, 10, 16)
 	case "integer":
